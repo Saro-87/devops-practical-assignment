@@ -1,4 +1,4 @@
-﻿name: DevOps CI Pipeline
+﻿name: DevOps CI-CD Pipeline
 
 on:
   push:
@@ -9,9 +9,14 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: devops-practical-app
 
 jobs:
-  test-and-build:
+  test-build-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,5 +34,27 @@ jobs:
       - name: Run automated tests
         run: python -m pytest -v
 
+      - name: Configure AWS credentials using OIDC
+        if: github.event_name != 'pull_request'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        if: github.event_name != 'pull_request'
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Build Docker image
         run: docker build -t devops-practical-app:${{ github.sha }} .
+
+      - name: Tag and push image to ECR
+        if: github.event_name != 'pull_request'
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker tag devops-practical-app:${IMAGE_TAG} \
+            ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
+          docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
