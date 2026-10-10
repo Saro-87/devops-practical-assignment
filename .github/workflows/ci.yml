@@ -34,6 +34,16 @@ jobs:
       - name: Run automated tests
         run: python -m pytest -v
 
+      - name: Diagnose GitHub OIDC claims
+        if: github.event_name != 'pull_request'
+        env:
+          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
+        run: |
+          TOKEN_JSON=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com")
+          TOKEN=$(echo "$TOKEN_JSON" | jq -r '.value')
+          PAYLOAD=$(echo "$TOKEN" | cut -d '.' -f2 | tr '_-' '/+' | base64 -d 2>/dev/null)
+          echo "$PAYLOAD" | jq '{iss, aud, sub}'
       - name: Configure AWS credentials using OIDC
         if: github.event_name != 'pull_request'
         uses: aws-actions/configure-aws-credentials@v4
@@ -58,3 +68,4 @@ jobs:
           docker tag devops-practical-app:${IMAGE_TAG} \
             ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
           docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
+
