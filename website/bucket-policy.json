@@ -1,0 +1,19 @@
+{
+    "Version":  "2012-10-17",
+    "Statement":  [
+                      {
+                          "Action":  "s3:GetObject",
+                          "Condition":  {
+                                            "StringEquals":  {
+                                                                 "AWS:SourceArn":  "arn:aws:cloudfront::341796273562:distribution/E18Z0P1918TQRV"
+                                                             }
+                                        },
+                          "Principal":  {
+                                            "Service":  "cloudfront.amazonaws.com"
+                                        },
+                          "Resource":  "arn:aws:s3:::devops-static-site-341796273562-2026/*",
+                          "Effect":  "Allow",
+                          "Sid":  "AllowCloudFrontReadOnly"
+                      }
+                  ]
+}

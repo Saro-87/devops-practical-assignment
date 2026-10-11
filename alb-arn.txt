@@ -1,0 +1,1 @@
+arn:aws:elasticloadbalancing:ap-south-1:341796273562:loadbalancer/app/devops-practical-alb/7d6f2597bdaf2e93

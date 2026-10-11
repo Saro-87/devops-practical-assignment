@@ -1,0 +1,34 @@
+{
+  "CallerReference": "devops-static-site-20261011",
+  "Comment": "DevOps practical assignment private S3 static website",
+  "Enabled": true,
+  "DefaultRootObject": "index.html",
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "private-s3-origin",
+        "DomainName": "devops-static-site-341796273562-2026.s3.ap-south-1.amazonaws.com",
+        "OriginAccessControlId": "E37ZFUNXAAC6F8",
+        "S3OriginConfig": {
+          "OriginAccessIdentity": ""
+        }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "private-s3-origin",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": {
+      "Quantity": 2,
+      "Items": ["GET", "HEAD"],
+      "CachedMethods": {
+        "Quantity": 2,
+        "Items": ["GET", "HEAD"]
+      }
+    },
+    "Compress": true,
+    "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6"
+  },
+  "PriceClass": "PriceClass_100"
+}

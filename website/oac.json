@@ -1,0 +1,7 @@
+{
+  "Name": "devops-static-site-oac",
+  "Description": "OAC for private DevOps assignment S3 website",
+  "SigningProtocol": "sigv4",
+  "SigningBehavior": "always",
+  "OriginAccessControlOriginType": "s3"
+}

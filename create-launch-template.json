@@ -1,0 +1,31 @@
+{
+    "LaunchTemplateData":  {
+                               "UserData":  "IyEvYmluL2Jhc2gKc2V0IC1ldXhvIHBpcGVmYWlsCgpkbmYgaW5zdGFsbCAteSBweXRob24zIHB5dGhvbjMtcGlwIGdpdAoKZ2l0IGNsb25lIC0tZGVwdGggMSAtLWJyYW5jaCBtYWluIGh0dHBzOi8vZ2l0aHViLmNvbS9TYXJvLTg3L2Rldm9wcy1wcmFjdGljYWwtYXNzaWdubWVudC5naXQgL29wdC9kZXZvcHMtcHJhY3RpY2FsLWFzc2lnbm1lbnQKCmNkIC9vcHQvZGV2b3BzLXByYWN0aWNhbC1hc3NpZ25tZW50CnB5dGhvbjMgLW0gdmVudiAvb3B0L2Rldm9wcy12ZW52Ci9vcHQvZGV2b3BzLXZlbnYvYmluL3BpcCBpbnN0YWxsIC1yIHJlcXVpcmVtZW50cy50eHQKCmNhdCA+IC9ldGMvc3lzdGVtZC9zeXN0ZW0vZGV2b3BzLWFwcC5zZXJ2aWNlIDw8J1NFUlZJQ0UnCltVbml0XQpEZXNjcmlwdGlvbj1EZXZPcHMgRmxhc2sgQXBwbGljYXRpb24KQWZ0ZXI9bmV0d29yay1vbmxpbmUudGFyZ2V0CldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldAoKW1NlcnZpY2VdCldvcmtpbmdEaXJlY3Rvcnk9L29wdC9kZXZvcHMtcHJhY3RpY2FsLWFzc2lnbm1lbnQKRXhlY1N0YXJ0PS9vcHQvZGV2b3BzLXZlbnYvYmluL2d1bmljb3JuIC0tYmluZCAwLjAuMC4wOjUwMDAgLS13b3JrZXJzIDIgYXBwLmFwcDphcHAKUmVzdGFydD1hbHdheXMKVXNlcj1yb290CgpbSW5zdGFsbF0KV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXQKU0VSVklDRQoKc3lzdGVtY3RsIGRhZW1vbi1yZWxvYWQKc3lzdGVtY3RsIGVuYWJsZSAtLW5vdyBkZXZvcHMtYXBw",
+                               "ImageId":  "ami-0a59fb4395466ed05",
+                               "MetadataOptions":  {
+                                                       "HttpEndpoint":  "enabled",
+                                                       "HttpTokens":  "required"
+                                                   },
+                               "TagSpecifications":  [
+                                                         {
+                                                             "Tags":  [
+                                                                          {
+                                                                              "Key":  "Name",
+                                                                              "Value":  "devops-asg-instance"
+                                                                          },
+                                                                          {
+                                                                              "Key":  "Project",
+                                                                              "Value":  "DevOps-Practical-Assignment"
+                                                                          }
+                                                                      ],
+                                                             "ResourceType":  "instance"
+                                                         }
+                                                     ],
+                               "SecurityGroupIds":  [
+                                                        "sg-023ad9b1b098daa23"
+                                                    ],
+                               "InstanceType":  "t3.micro"
+                           },
+    "VersionDescription":  "Flask app using Gunicorn",
+    "LaunchTemplateName":  "devops-practical-launch-template"
+}
