@@ -237,33 +237,7 @@ live ALB endpoint is therefore no longer available.
 Results above describe the tests performed during the assignment. They
 do not imply that the deleted AWS endpoints remain online.
 
-## 12. Cost Optimization and Cleanup
-
-After completing the practical tests, the AWS resources created for the
-assignment were removed to reduce the risk of ongoing charges. Checks in
-`ap-south-1` showed no remaining EC2 instances, ECR repositories, S3
-buckets, or CloudFront distributions among the services checked at that
-time.
-
-A scan across enabled regions showed no EC2 instances in the returned
-results. One ECR request for `us-west-1` returned a connection error, so
-that region was not verified by that request. Other AWS services and
-regions must also be checked before claiming that the entire account has
-no billable resources.
-
-Before considering cleanup complete:
-
-1.  Review **AWS Billing → Bills** and **Cost Explorer**.
-2.  Check remaining EBS volumes and snapshots, Elastic IPs, NAT
-    Gateways, load balancers, RDS databases, and other services across
-    enabled regions.
-3.  Re-run checks for any region that returned a connection error.
-4.  Remember that charges incurred before deletion can still appear on
-    the bill.
-
-AWS Billing Console: https://console.aws.amazon.com/billing/home
-
-## 13. Repository Structure
+## 12. Repository Structure
 
 The repository contains the application and supporting DevOps files.
 Refer to the actual repository tree for the definitive list of files and
@@ -285,7 +259,7 @@ devops-practical-assignment/
 *The names and paths above are illustrative where noted; use the
 committed files in the repository as the source of truth.*
 
-## 14. Evidence for Submission
+## 13. Evidence for Submission
 
 Recommended evidence screenshots:
 
@@ -303,7 +277,7 @@ Only include screenshots that were actually captured. The AWS-hosted
 endpoints are no longer expected to be active because resources were
 deleted for cost control.
 
-## 15. Conclusion
+## 14. Conclusion
 
 This practical assignment demonstrates a container-based application
 workflow using GitHub, GitHub Actions, Docker, Kubernetes, and AWS
